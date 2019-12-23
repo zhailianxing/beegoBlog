@@ -26,11 +26,12 @@ import (
 //}
 
 type Category struct {
-	Id              int64
-	Title           string
-	CreatedTime     time.Time `orm:"index"`
-	Views           int64     `orm:"index"`
-	TopicTime       time.Time `orm:"index"`
+	Id          int64
+	Title       string
+	CreatedTime time.Time `orm:"index;auto_now_add"`
+	Views       int64     `orm:"index"`
+	//auto_now_add相当于mysql原生语句： date default(CURRENT_TIMESTAMP)
+	TopicTime       time.Time `orm:"index;auto_now_add"`
 	TopicCount      int64     // Topic是文章的意思
 	TopicLastUserId int64
 }
